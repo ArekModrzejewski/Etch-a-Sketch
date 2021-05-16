@@ -51,3 +51,4 @@ size_button.onclick = size_buttonFunction;
 
 window.onmousedown = drawingHover;
 createDivs(16);
+
