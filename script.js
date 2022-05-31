@@ -2,6 +2,7 @@ const divs = document.getElementsByClassName('neutral-div');
 const reset_button = document.getElementById('reset-button');
 const size_button = document.getElementById('size-button');
 const container = document.querySelector('#squares-container');
+let mouseDown = false;
 
 //funtion creating divs taking number of columns of the square grid
 function createDivs(numberOfColumns) {
@@ -20,11 +21,13 @@ function removeDivs() {
 
 
 function drawingHover() {
-        container.addEventListener('mouseover', function (e) {
+    container.addEventListener('mouseover', function (e) {
+        if (mouseDown) {
             (e.target).classList.add('hovered-div');
         }
-        )
     }
+    )
+}
 
 function resetColor() {
     for (i = 0; i < divs.length; i++) {
@@ -43,10 +46,13 @@ function size_buttonFunction() {
         size_buttonFunction()
     }
 }
+function mouseDownTrue() {mouseDown = true}
+function mouseDownFalse() {mouseDown = false}
 reset_button.onclick = resetColor;
 
 size_button.onclick = size_buttonFunction;
-
-window.onmousedown = drawingHover;
+window.onmouseup = mouseDownFalse;
+container.onmousedown = drawingHover;
+window.onmousedown = mouseDownTrue;
 createDivs(16);
 
