@@ -1,11 +1,11 @@
 const divs = document.getElementsByClassName('neutral-div');
 const reset_button = document.getElementById('reset-button');
 const size_button = document.getElementById('size-button');
+const container = document.querySelector('#squares-container');
 
 //funtion creating divs taking number of columns of the square grid
 function createDivs(numberOfColumns) {
     let i = 0;
-    const container = document.querySelector('#squares-container');
     while (i < numberOfColumns ** 2) {
         const content = document.createElement('div');
         content.classList.add('neutral-div')
@@ -20,13 +20,11 @@ function removeDivs() {
 
 
 function drawingHover() {
-    for (i = 0; i < divs.length; i++) {
-        divs[i].addEventListener('mouseover', function (e) {
+        container.addEventListener('mouseover', function (e) {
             (e.target).classList.add('hovered-div');
         }
         )
     }
-}
 
 function resetColor() {
     for (i = 0; i < divs.length; i++) {
